@@ -69,10 +69,10 @@ packages:
     dependency: transitive
     description:
       name: camera_platform_interface
-      sha256: e971ebca970f7cfee396f76ef02070b5e441b4aa04942da9c108d725f57bbd32
+      sha256: fceb2c36038b6392317b1d5790c6ba9e6ca9f1da3031181b8bea03882bf9387a
       url: "https://pub.dev"
     source: hosted
-    version: "2.7.2"
+    version: "2.7.3"
   camera_web:
     dependency: transitive
     description:
@@ -145,6 +145,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.10"
+  extended_image:
+    dependency: transitive
+    description:
+      name: extended_image
+      sha256: a6b738d9b8d5513be72c545cc3e9c5c451fbee77c8db3cbec7c32ae85b82fb93
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.4.1"
+  extended_image_library:
+    dependency: transitive
+    description:
+      name: extended_image_library
+      sha256: "8bf87c0b14dcb59200c923a9a3952304e4732a0901e40811428834ef39018ee1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.6.0"
   fake_async:
     dependency: transitive
     description:
@@ -272,6 +288,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  http_client_helper:
+    dependency: transitive
+    description:
+      name: http_client_helper
+      sha256: "8a9127650734da86b5c73760de2b404494c968a3fd55602045ffec789dac3cb1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   http_parser:
     dependency: transitive
     description:
@@ -356,10 +380,10 @@ packages:
     dependency: transitive
     description:
       name: js
-      sha256: "4186c61b32f99e60f011f7160e32c89a758ae9b1d0c6d28e2c02ef0382300e2b"
+      sha256: f2c445dce49627136094980615a031419f7f3eb393237e4ecd97ac15dea343f3
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.0"
+    version: "0.6.7"
   lints:
     dependency: transitive
     description:
@@ -584,6 +608,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
+  shimmer:
+    dependency: "direct main"
+    description:
+      name: shimmer
+      sha256: "5f88c883a22e9f9f299e5ba0e4f7e6054857224976a5d9f839d4ebdc94a14ac9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -605,6 +637,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.1"
+  story_viewer:
+    dependency: "direct main"
+    description:
+      name: story_viewer
+      sha256: cfb816281d1d87a1cb0a66a625092bcbb922c472afcbbbdd646e1289b9facb5b
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.0"
   stream_channel:
     dependency: transitive
     description:

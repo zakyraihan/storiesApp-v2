@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:story_app_api/model/model.dart';
@@ -59,6 +60,7 @@ class AuthController {
         String token = loginProses.loginResult.token;
         SharedPreferences preferences = await SharedPreferences.getInstance();
         preferences.setString('token', token);
+        preferences.setString('name', loginProses.loginResult.name);
 
         return token;
       }
@@ -67,7 +69,7 @@ class AuthController {
     }
   }
 
-   Future<String?> getToken() async {
+  Future<String?> getToken() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? token = preferences.getString('token');
     return token;
@@ -76,7 +78,16 @@ class AuthController {
   Future<bool> isAuthenticated() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? token = preferences.getString('token');
+    String? name = preferences.getString('name');
     log('token -> $token');
-    return token != null;
+    return token != null && name != null;
+  }
+
+  Future logOut(context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('token');
+    prefs.remove('name');
+
+    Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
   }
 }

@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:story_app_api/api/api_service.dart';
 import 'package:story_app_api/controller/auth_controller.dart';
+import 'package:story_app_api/controller/camera_controller.dart';
 import 'package:story_app_api/controller/story_controller.dart';
+import 'package:story_app_api/ui/add_story_page.dart';
 import 'package:story_app_api/ui/home.dart';
 import 'package:story_app_api/ui/login_screen.dart';
 import 'package:story_app_api/ui/register_screen.dart';
@@ -32,19 +35,29 @@ class MyApp extends StatelessWidget {
               ChangeNotifierProvider(
                 create: (context) =>
                     StoriesProvider(apiService: ApiService('')),
+              ),
+              ChangeNotifierProvider(
+                create: (context) => CameraProvider(),
               )
             ],
             child: MaterialApp(
+              builder: (context, child) {
+                return CupertinoTheme(
+                  data: const CupertinoThemeData(brightness: Brightness.light),
+                  child: Material(
+                    child: child,
+                  ),
+                );
+              },
+              theme: ThemeData.light(),
+              debugShowCheckedModeBanner: false,
               title: 'Flutter Demo',
-              theme: ThemeData(
-                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-                useMaterial3: true,
-              ),
               initialRoute: isAuthenticated ? '/' : '/login',
               routes: {
                 '/': (context) => const HomeScreen(),
                 '/register': (context) => const RegisterScreen(),
                 '/login': (context) => const LoginScreen(),
+                '/addstories': (context) => const AddStoryPage(),
               },
             ),
           );

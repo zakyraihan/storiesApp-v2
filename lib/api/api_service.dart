@@ -29,4 +29,6 @@ class ApiService {
       throw Exception('Failed To Fetch Restaurant Data');
     }
   }
+
+  Future addStory() async {}
 }

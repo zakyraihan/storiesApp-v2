@@ -8,15 +8,17 @@ class SplashScreen extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.white,
         body: Column(
           children: [
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.9,
               child: Image.asset('assets/img/logo-removebg-preview.png'),
             ),
-            const Text('Dicoding Indonesia',
-                style: TextStyle(color: Colors.white))
+            const Text(
+              'Dicoding Indonesia',
+              style: TextStyle(color: Colors.black),
+            )
           ],
         ),
       ),

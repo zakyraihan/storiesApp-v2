@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:story_app_api/controller/auth_controller.dart';
@@ -23,12 +25,12 @@ class _LoginScreenState extends State<LoginScreen> {
       loading = true;
     });
 
-    AuthController().loginProses(email.text, password.text).then((value) {
+    AuthController().loginProses(email.text, password.text).then((value) async {
       if (value != null) {
         AwesomeDialog(
           context: context,
           title: 'Succes',
-          desc: 'Login Berhasil',
+          desc: 'Login Berhasil ${email.text}',
           dialogType: DialogType.success,
           btnOkOnPress: () =>
               Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false),
@@ -80,11 +82,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   obscureText: isObscure,
                 ),
                 const SizedBox(height: 30),
-                ElevatedButton(
-                  onPressed: () => saveLogin(),
-                  child: loading
-                      ? const CircularProgressIndicator()
-                      : const Text('Sign In'),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () => saveLogin(),
+                    child: loading
+                        ? const CircularProgressIndicator()
+                        : const Text('Sign In'),
+                  ),
                 ),
                 const SizedBox(height: 40),
                 const Register(),

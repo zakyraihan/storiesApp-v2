@@ -36,7 +36,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^1.2.0
   provider: ^6.1.1
-  camera: ^0.10.5+9
   image_picker: ^1.0.7
   image: ^4.1.4
   awesome_dialog: ^3.2.0
@@ -44,6 +43,9 @@ dependencies:
   rxdart: ^0.27.7
   path_provider: ^2.1.2
   shared_preferences: ^2.2.2
+  shimmer: ^3.0.0
+  camera: ^0.10.5+9
+  story_viewer: ^0.2.0
 
 dev_dependencies:
   flutter_test:
