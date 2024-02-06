@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:story_app_api/api/api_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:story_app_api/controller/auth_controller.dart';
 import 'package:story_app_api/controller/camera_controller.dart';
 import 'package:story_app_api/controller/story_controller.dart';
+import 'package:story_app_api/controller/theme_controller.dart';
+import 'package:story_app_api/data/api/api_service.dart';
+import 'package:story_app_api/data/preferences/preferences_helper.dart';
 import 'package:story_app_api/ui/add_story_page.dart';
 import 'package:story_app_api/ui/home.dart';
 import 'package:story_app_api/ui/login_screen.dart';
@@ -38,26 +41,40 @@ class MyApp extends StatelessWidget {
               ),
               ChangeNotifierProvider(
                 create: (context) => CameraProvider(),
+              ),
+              ChangeNotifierProvider(
+                create: (context) => ThemeProvider(
+                  preferencesHelper: PreferencesHelper(
+                      sharedPreferences: SharedPreferences.getInstance()),
+                ),
               )
             ],
-            child: MaterialApp(
-              builder: (context, child) {
-                return CupertinoTheme(
-                  data: const CupertinoThemeData(brightness: Brightness.light),
-                  child: Material(
-                    child: child,
-                  ),
+            child: Consumer<ThemeProvider>(
+              builder: (context, provider, _) {
+                return MaterialApp(
+                  builder: (context, child) {
+                    return CupertinoTheme(
+                      data: CupertinoThemeData(
+                        brightness: provider.isDarkTheme
+                            ? Brightness.dark
+                            : Brightness.light,
+                      ),
+                      child: Material(
+                        child: child,
+                      ),
+                    );
+                  },
+                  theme: provider.themeData,
+                  debugShowCheckedModeBanner: false,
+                  title: 'Flutter Demo',
+                  initialRoute: isAuthenticated ? '/' : '/login',
+                  routes: {
+                    '/': (context) => const HomeScreen(),
+                    '/register': (context) => const RegisterScreen(),
+                    '/login': (context) => const LoginScreen(),
+                    '/addstories': (context) => const AddStoryPage(),
+                  },
                 );
-              },
-              theme: ThemeData.light(),
-              debugShowCheckedModeBanner: false,
-              title: 'Flutter Demo',
-              initialRoute: isAuthenticated ? '/' : '/login',
-              routes: {
-                '/': (context) => const HomeScreen(),
-                '/register': (context) => const RegisterScreen(),
-                '/login': (context) => const LoginScreen(),
-                '/addstories': (context) => const AddStoryPage(),
               },
             ),
           );

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:http/http.dart' as http;
-import 'package:story_app_api/model/model.dart';
+import 'package:story_app_api/data/model/model.dart';
 
 class ApiService {
   final String token;

@@ -60,9 +60,9 @@ class _StoriesListPageState extends State<StoriesListPage> {
           },
         ),
         transitionBetweenRoutes: false,
-        trailing: IconButton(
-            onPressed: () => Navigator.pushNamed(context, '/addstories'),
-            icon: const Icon(CupertinoIcons.add_circled)),
+        // trailing: IconButton(
+        //     onPressed: () => Navigator.pushNamed(context, '/addstories'),
+        //     icon: const Icon(CupertinoIcons.add_circled)),
       ),
       child: Material(
         child: _buildList(context),

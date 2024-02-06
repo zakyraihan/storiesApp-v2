@@ -1,9 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:story_app_api/api/api_service.dart';
+import 'package:story_app_api/data/api/api_service.dart';
 import 'package:story_app_api/controller/auth_controller.dart';
-import 'package:story_app_api/model/model.dart';
+import 'package:story_app_api/data/model/model.dart';
+
 import 'package:story_app_api/utils/result_state.dart';
 
 class StoriesProvider extends ChangeNotifier {
